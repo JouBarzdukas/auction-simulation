@@ -35,7 +35,7 @@ class AuctionSimulation:
             print(f"Bidder ID: {bidder.id}, Value: {bidder.value}")
     
     def profit_for_auctioneer(self):
-        return self.second_highest_price if self.second_highest_price > 0 else 0
+        return self.second_highest_price
     
     def profit_to_be_made(self):
         return self.highest_price - self.second_highest_price
