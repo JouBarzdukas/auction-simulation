@@ -22,12 +22,12 @@ class BidderList:
         self.current_id_count += 1
 
     def add_extra_fake_bidder(self):
-        new_bidder = Bidder.Bidder(self.current_id_count, self.distribution.sample())
+        new_bidder = Bidder.Bidder(self.current_id_count, self.distribution.sample(), "auctioneer")
         self.bidders[self.current_id_count] = new_bidder
         self.current_id_count += 1
 
     def add_reserve_price(self, reserve_price):
-        new_bidder = Bidder.Bidder(-1, reserve_price)
+        new_bidder = Bidder.Bidder(-1, reserve_price, "auctioneer")
         self.bidders[-1] = new_bidder
 
     def get_bidder_by_id(self, bidder_id):

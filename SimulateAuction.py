@@ -23,9 +23,13 @@ class AuctionSimulation:
                 self.second_highest_price = bidder.value
                 self.second_highest_bidder_id = bidder.id
 
+    def is_winner_legitimate(self):
+        return self.bidder_list.get_bidder_by_id(self.highest_bidder_id).bidder_type == "real"
 
-    
     def print_auction_details(self):
+        if not self.is_winner_legitimate():
+            print("Auctioneer won the auction, no profit to be made.")
+            return
         print(f"Auction Winner: {self.highest_bidder_id}, Won with bid: {self.highest_price}, At price: {self.second_highest_price}")
         print("Profit to be made: ", self.profit_to_be_made())
         print("----------")
@@ -35,7 +39,9 @@ class AuctionSimulation:
             print(f"Bidder ID: {bidder.id}, Value: {bidder.value}")
     
     def profit_for_auctioneer(self):
-        return self.second_highest_price
+        if self.is_winner_legitimate():
+            return self.second_highest_price
+        return 0
     
     def profit_to_be_made(self):
         return self.highest_price - self.second_highest_price
