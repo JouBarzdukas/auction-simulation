@@ -7,7 +7,7 @@ def main():
     for _ in range(amount_of_rounds):
         auction = SimulateAuction.AuctionSimulation(1, 1.3)
         expected_profit += auction.profit_for_auctioneer()
-    print("Average profit for auctioneer: ", expected_profit / amount_of_rounds)
+    print("Average profit for auctioneer:", round(expected_profit / amount_of_rounds, 3))
 
 if __name__ == "__main__":
     main()
